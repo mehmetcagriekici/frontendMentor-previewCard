@@ -1,0 +1,245 @@
+/*import font families, "Montserrat", "Fraunces"*/
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/*project varaibles*/
+:root {
+  /*theme*/
+  --color-green-500: hsl(158, 36%, 37%);
+  --color-green-700: hsl(158, 42%, 18%);
+  --color-black: hsl(212, 21%, 14%);
+  --color-grey: hsl(228, 12%, 48%);
+  --color-cream: hsl(30, 38%, 92%);
+  --color-white: hsl(0, 0%, 100%);
+
+  /*font sizes*/
+  --font-sm: clamp(0.5rem, 2vw, 1rem);
+  --font-base: clamp(0.7rem, 4vw, 1.4rem);
+  --font-lg: clamp(1.6rem, 8vw, 3.2rem);
+
+  /*sizes*/
+  --container-width: clamp(20rem, 46vw, 80rem);
+  --contaier-heigth: clamp(36rem, 34vw, 52rem);
+
+  /*border radiuses*/
+  --container-raidus: 1rem;
+  --cta-radiues: 0.8rem;
+
+  /*paddings*/
+  --content-padding: 1rem;
+  --cta-padding: 1rem;
+
+  /*gaps*/
+  --container-gap: 1rem;
+  --content-gap: 1rem;
+  --prices-gap: 1.6rem;
+  --cta-gap: 1rem;
+}
+
+/*default styles*/
+html,
+body,
+main,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /*1rem = 10px*/
+  font-size: 62.5%;
+  /*default font family*/
+  font-family: "Montserrat", sans-serif;
+
+  overflow: hidden;
+}
+
+main {
+  /*size*/
+  width: 100dvw;
+  height: 100dvh;
+
+  /*center the container*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*background color*/
+  background-color: var(--color-cream);
+}
+
+/*fit images*/
+img {
+  object-fit: contain;
+  border-radius: inherit;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/*container*/
+.container {
+  /*size*/
+  width: var(--container-width);
+  height: auto;
+
+  /*display*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: var(--container-gap);
+
+  /*border*/
+  border-radius: var(--container-raidus);
+
+  background-color: var(--color-white);
+}
+
+/*images*/
+.image-mobile {
+  width: 100%;
+  display: flex;
+
+  /*border*/
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.image-mobile img {
+  /*image size*/
+  width: 100%;
+  height: auto;
+}
+
+.image-desktop {
+  height: 100%;
+  display: none;
+
+  /*border*/
+  border-radius: inherit;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.image-desktop img {
+  /*image size*/
+  height: 100%;
+  width: auto;
+}
+
+/*content*/
+.content {
+  /*size*/
+  width: 100%;
+  height: auto;
+
+  /*display*/
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: var(--content-gap);
+
+  /*padding*/
+  padding: var(--content-padding);
+}
+
+/*product*/
+.product h5 {
+  /*typography*/
+  font-size: var(--font-base);
+  color: var(--color-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  font-weight: 500;
+}
+
+/*header*/
+.header h3 {
+  /*typography*/
+  font-family: "Fraunces", sans-serif;
+  font-size: var(--font-lg);
+  text-transform: capitalize;
+}
+
+/*text*/
+.text p {
+  /*typography*/
+  font-size: var(--font-base);
+  color: var(--color-grey);
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+/*prices*/
+.prices {
+  /*display*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--prices-gap);
+}
+
+.prices p:first-child {
+  /*typography*/
+  font-family: "Fraunces", sans-serif;
+  font-size: var(--font-lg);
+  color: var(--color-green-500);
+  font-weight: 900;
+}
+
+.prices p:last-child {
+  /*typography*/
+  font-size: var(--font-base);
+  text-decoration: line-through;
+  color: var(--color-grey);
+  font-weight: 600;
+}
+
+/*call to action*/
+.cta {
+  /*size*/
+  width: 100%;
+
+  /*display*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--cta-gap);
+
+  /*padding*/
+  padding: var(--cta-padding);
+
+  /*border radius*/
+  border-radius: var(--cta-radiues);
+
+  /*background*/
+  background-color: var(--color-green-500);
+}
+
+/*media queries*/
+@media (width > 1024px) {
+  :root {
+    --content-gap: 2rem;
+  }
+
+  .container {
+    height: var(--contaier-heigth);
+    flex-direction: row;
+  }
+
+  .image-mobile {
+    display: none;
+  }
+
+  .image-desktop {
+    display: flex;
+  }
+}
