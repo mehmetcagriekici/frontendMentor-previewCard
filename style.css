@@ -12,33 +12,30 @@
   --color-white: hsl(0, 0%, 100%);
 
   /*font sizes*/
-  --font-sm: clamp(0.5rem, 2vw, 1rem);
-  --font-base: clamp(0.7rem, 4vw, 1.4rem);
-  --font-lg: clamp(1.6rem, 8vw, 3.2rem);
+  --font-base: clamp(0.6rem, 2.4vw, 1.1rem);
+  --font-lg: clamp(1.4rem, 5.2vw, 2.5rem);
 
   /*sizes*/
   --container-width: clamp(20rem, 46vw, 80rem);
-  --contaier-heigth: clamp(36rem, 34vw, 52rem);
+  --container-height: clamp(36rem, 34vw, 52rem);
 
   /*border radiuses*/
   --container-raidus: 1rem;
-  --cta-radiues: 0.8rem;
+  --cta-radius: 0.8rem;
 
   /*paddings*/
-  --content-padding: 1rem;
-  --cta-padding: 1rem;
+  --content-padding: clamp(1rem, 1vw, 2rem);
+  --cta-padding: clamp(1.2rem, 1.2vw, 2.2rem);
 
   /*gaps*/
-  --container-gap: 1rem;
-  --content-gap: 1rem;
-  --prices-gap: 1.6rem;
-  --cta-gap: 1rem;
+  --container-gap: clamp(1.1rem, 1.1vw, 2.1rem);
+  --content-gap: clamp(1.3rem, 1.3vw, 2.3rem);
+  --prices-gap: clamp(1.6rem, 1.6vw, 2.4rem);
+  --cta-gap: clamp(1.3rem, 1.5vw, 2.4rem);
 }
 
 /*default styles*/
 html,
-body,
-main,
 *,
 *::before,
 *::after {
@@ -48,31 +45,35 @@ main,
 }
 
 body {
+  /*size*/
+  width: 100dvw;
+  height: 100dvh;
+
   /*1rem = 10px*/
   font-size: 62.5%;
   /*default font family*/
   font-family: "Montserrat", sans-serif;
 
   overflow: hidden;
-}
-
-main {
-  /*size*/
-  width: 100dvw;
-  height: 100dvh;
-
-  /*center the container*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   /*background color*/
   background-color: var(--color-cream);
 }
 
+main {
+  /*size*/
+  width: 100%;
+  height: 100%;
+
+  /*to center the container*/
+  position: relative;
+}
+
 /*fit images*/
 img {
   object-fit: contain;
+  width: 100%;
+  height: auto;
   border-radius: inherit;
 }
 
@@ -84,8 +85,15 @@ button {
 
 /*container*/
 .container {
+  /*position it to the center*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   /*size*/
   width: var(--container-width);
+  max-width: 80%;
   height: auto;
 
   /*display*/
@@ -104,6 +112,7 @@ button {
 /*images*/
 .image-mobile {
   width: 100%;
+
   display: flex;
 
   /*border*/
@@ -120,6 +129,7 @@ button {
 
 .image-desktop {
   height: 100%;
+
   display: none;
 
   /*border*/
@@ -218,28 +228,49 @@ button {
   padding: var(--cta-padding);
 
   /*border radius*/
-  border-radius: var(--cta-radiues);
+  border-radius: var(--cta-radius);
+
+  color: var(--color-white);
+  font-size: var(--font-base);
 
   /*background*/
   background-color: var(--color-green-500);
+
+  cursor: pointer;
+}
+
+.cta:hover {
+  background-color: var(--color-green-700);
+}
+
+.cta img {
+  width: var(--font-base);
 }
 
 /*media queries*/
-@media (width > 1024px) {
-  :root {
-    --content-gap: 2rem;
-  }
-
+@media (min-width: 768px) {
   .container {
-    height: var(--contaier-heigth);
+    height: var(--container-height);
+    min-width: fit-content;
     flex-direction: row;
   }
 
+  /*swap images*/
   .image-mobile {
     display: none;
   }
 
   .image-desktop {
     display: flex;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    /*limit the container width*/
+    --container-width: clamp(20rem, 46vw, 30rem);
+    /*increase the font sizes gradually*/
+    --font-base: clamp(0.6rem, 1vw, 2.4rem);
+    --font-lg: clamp(1.4rem, 3vw, 3.2rem);
   }
 }
